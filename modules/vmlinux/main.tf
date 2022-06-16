@@ -1,4 +1,4 @@
-resource "azurerm_network_interface" "nic" {
+resource "azurerm_network_interface" "linux-nic" {
   count               = var.nb_count
   name                = "${var.linux_name}-nic-${format("%1d", count.index + 1)}"
   location            = var.location
@@ -10,11 +10,11 @@ resource "azurerm_network_interface" "nic" {
     name                          = "${var.linux_name}-ipconfig-${format("%1d", count.index + 1)}"
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = element(azurerm_public_ip.pip[*].id, count.index + 1)
+    public_ip_address_id          = element(azurerm_public_ip.linux-pip[*].id, count.index + 1)
   }
 }
 
-resource "azurerm_public_ip" "pip" {
+resource "azurerm_public_ip" "linux-pip" {
   count               = var.nb_count
   name                = "${var.linux_name}-pip-${format("%1d", count.index + 1)}"
   resource_group_name = var.resource_group
@@ -25,7 +25,7 @@ resource "azurerm_public_ip" "pip" {
 
 }
 
-resource "azurerm_linux_virtual_machine" "vm" {
+resource "azurerm_linux_virtual_machine" "linux-vm" {
   count               = var.nb_count
   name                = "${var.linux_name}-vm-${format("%1d", count.index + 1)}"
   resource_group_name = var.resource_group
@@ -36,7 +36,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   tags                = local.common_tags
 
   network_interface_ids = [
-    element(azurerm_network_interface.nic[*].id, count.index + 1)
+    element(azurerm_network_interface.linux-nic[*].id, count.index + 1)
   ]
 
   admin_password                  = var.admin_password
@@ -61,7 +61,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 }
 
-resource "azurerm_availability_set" "avs" {
+resource "azurerm_availability_set" "linux-avs" {
   name                         = var.linux_avs
   location                     = var.location
   resource_group_name          = var.resource_group
@@ -69,10 +69,10 @@ resource "azurerm_availability_set" "avs" {
   platform_fault_domain_count  = var.linux_avs_value["fault_domain"]
 }
 
-resource "azurerm_virtual_machine_extension" "vme" {
+resource "azurerm_virtual_machine_extension" "linux-vme" {
   count               = var.nb_count
   name                = "${var.linux_name}-vme-${format("%1d", count.index + 1)}"
-  virtual_machine_id   = azurerm_linux_virtual_machine.vm[count.index].id
+  virtual_machine_id   = azurerm_linux_virtual_machine.linux-vm[count.index].id
   publisher            = var.vme["publisher"]
   type                 = var.vme["type"]
   type_handler_version = var.vme["type_handler_version"]

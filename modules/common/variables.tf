@@ -19,7 +19,7 @@ variable "location" {
 variable "log_analytics_workspace" {
     type = map(string)
     default = {
-        name = "log-analytics-workspace"
+        name = "3552-log-analytics-workspace"
         sku = "PerGB2018"
         ret-in-days = 30
     }
@@ -28,7 +28,7 @@ variable "log_analytics_workspace" {
 variable "recovery_services_vault" {
     type = map(string)
     default = {
-        name = "assignment1-3552"
+        name = "vault-3552"
         sku = "Standard"
     }
 }
@@ -45,7 +45,7 @@ variable "storage_account" {
 variable "storage_container" {
     type = map(string)
     default = {
-        name = "storage-container"
+        name = "3552-storage-container"
         container_access_type = "private"
     }
 }
@@ -53,7 +53,7 @@ variable "storage_container" {
 variable "storage_blob" {
     type = map(string)
     default = {
-        name = "storage_blob"
+        name = "3552-storage_blob"
         type  = "Block"
     }
 }

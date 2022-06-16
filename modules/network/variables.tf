@@ -17,7 +17,7 @@ variable "location" {
 }
 
 variable "vnet" {
-  default = "virtual_network"
+  default = "3552-virtual-network"
 }
 
 variable "vnet_space" {
@@ -25,7 +25,7 @@ variable "vnet_space" {
 }
 
 variable "subnet" {
-  default = "subnet"
+  default = "3552-subnet"
 }
 
 variable "subnet_space" {

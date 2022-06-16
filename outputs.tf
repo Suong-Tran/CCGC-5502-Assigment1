@@ -37,3 +37,19 @@ output "Linux_private_ip_address" {
 output "Linux_dns" {
   value = module.vmlinux.Linux_dns
 }
+
+output "Windows_hostname" {
+  value = module.vmwindows.Windows_hostname
+}
+
+output "Windows_public_ip_addresses" {
+    value = module.vmwindows.Windows_public_ip_addresses
+}
+
+output "Windows_private_ip_address" {
+  value = module.vmwindows.Windows_private_ip_address
+}
+
+output "Windows_dns" {
+  value = module.vmwindows.Windows_dns
+}

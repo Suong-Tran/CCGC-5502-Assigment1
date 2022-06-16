@@ -56,7 +56,7 @@ locals {
 }
 
 variable "linux_avs" {
-    default = "linux_avs"
+    default = "3552-linux-avs"
 }
 
 variable "linux_avs_value" {
