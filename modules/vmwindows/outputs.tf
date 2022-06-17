@@ -13,3 +13,7 @@ output "Windows_private_ip_address" {
 output "Windows_dns" {
   value = azurerm_public_ip.windows-pip.domain_name_label
 }
+
+output "Windows_vm" {
+  value = azurerm_windows_virtual_machine.windows-vm
+}

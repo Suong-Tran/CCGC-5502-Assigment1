@@ -9,9 +9,9 @@ locals {
 }
 
 variable "resource_group" {
-  default = "3552-Assignment1-RG"
+  default = ""
 }
 
 variable "location" {
-  default = "Australia Central"
+  default = ""
 }

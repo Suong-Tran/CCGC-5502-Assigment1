@@ -38,6 +38,10 @@ output "Linux_dns" {
   value = module.vmlinux.Linux_dns
 }
 
+output "Linux_id" {
+  value = module.vmlinux.Linux_id
+}
+
 output "Windows_hostname" {
   value = module.vmwindows.Windows_hostname
 }
