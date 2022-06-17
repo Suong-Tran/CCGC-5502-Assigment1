@@ -18,7 +18,7 @@ resource "azurerm_virtual_machine_data_disk_attachment" "windows_data_disk_attac
 
  resource "azurerm_managed_disk" "linux_data_disk" {
   for_each             = var.linux_name
-  name                 = "${each.value}-data-disk"
+  name                 = "${each.key}-data-disk"
   location             = var.location
   resource_group_name  = var.resource_group
   storage_account_type = var.storage_account_type

@@ -35,6 +35,7 @@ resource "azurerm_linux_virtual_machine" "linux-vm" {
   computer_name       = "${var.linux_name}-cn-${format("%1d", count.index + 1)}"
   tags                = local.common_tags
 
+  availability_set_id = azurerm_availability_set.linux-avs.id
   network_interface_ids = [
     element(azurerm_network_interface.linux-nic[*].id, count.index + 1)
   ]
@@ -59,6 +60,8 @@ resource "azurerm_linux_virtual_machine" "linux-vm" {
   boot_diagnostics {
     storage_account_uri = var.storage_account_uri
   }
+
+  depends_on = [azurerm_availability_set.linux-avs]
 }
 
 resource "azurerm_availability_set" "linux-avs" {

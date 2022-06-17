@@ -31,7 +31,7 @@ resource "azurerm_windows_virtual_machine" "windows-vm" {
   admin_username      = var.admin_username
   admin_password      = var.admin_password
   computer_name       = "${var.windows_name}"
-
+  availability_set_id = azurerm_availability_set.windows-avs.id
   
   tags = local.common_tags
   
@@ -61,6 +61,8 @@ resource "azurerm_windows_virtual_machine" "windows-vm" {
   boot_diagnostics {
     storage_account_uri = var.storage_account_uri
   }
+
+  depends_on = [azurerm_availability_set.windows-avs]
   
 }
 

@@ -11,15 +11,15 @@ output "subnet" {
 }
 
 output "log_analytics_workspace" {
-    value = module.common.log_analytics_workspace.name
+  value = module.common.log_analytics_workspace.name
 }
 
 output "recovery_services_vault" {
-    value = module.common.recovery_services_vault.name
+  value = module.common.recovery_services_vault.name
 }
 
 output "storage_account" {
-    value = module.common.storage_account.name
+  value = module.common.storage_account.name
 }
 
 output "Linux_hostname" {
@@ -27,7 +27,7 @@ output "Linux_hostname" {
 }
 
 output "Linux_public_ip_addresses" {
-    value = module.vmlinux.Linux_public_ip_addresses
+  value = module.vmlinux.Linux_public_ip_addresses
 }
 
 output "Linux_private_ip_address" {
@@ -38,16 +38,12 @@ output "Linux_dns" {
   value = module.vmlinux.Linux_dns
 }
 
-output "Linux_id" {
-  value = module.vmlinux.Linux_id
-}
-
 output "Windows_hostname" {
   value = module.vmwindows.Windows_hostname
 }
 
 output "Windows_public_ip_addresses" {
-    value = module.vmwindows.Windows_public_ip_addresses
+  value = module.vmwindows.Windows_public_ip_addresses
 }
 
 output "Windows_private_ip_address" {
@@ -56,4 +52,12 @@ output "Windows_private_ip_address" {
 
 output "Windows_dns" {
   value = module.vmwindows.Windows_dns
+}
+
+output "Loadbalancer_name" {
+  value = module.loadbalancer.Loadbalancer.name
+}
+
+output "Database_instace" {
+  value = module.database.Database_instace.name
 }

@@ -62,7 +62,7 @@ variable "linux_avs" {
 variable "linux_avs_value" {
   type = map(string)
   default = {
-    update_domain = 5
+    update_domain = 10
     fault_domain  = 2
   }
 }
