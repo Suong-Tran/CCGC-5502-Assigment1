@@ -1,7 +1,13 @@
 #  Local .terraform directories
 **/.terraform/*
+
+#Screenshot folders
 **/screenshots/*
+
 
 # .tfstate files
 *.tfstate
 *.tfstate.*
+
+#
+*.docx
